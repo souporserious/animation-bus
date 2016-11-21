@@ -1,0 +1,20 @@
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  width: 75%;
+  margin: 100vh auto;
+}
+
+.title {
+  margin-right: 15px;
+}
+
+.image {
+  flex: 1;
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
+}
