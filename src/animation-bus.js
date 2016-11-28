@@ -20,25 +20,26 @@ const transformUnits = {
 const transformKeys = Object.keys(transformUnits)
 
 class AnimationBus {
-  constructor(animations, origin) {
+  constructor({ animations, element, origin }) {
     this.animations = animations
+    this.element = element
     this.origin = origin
   }
 
-  getStyles(element) {
+  getStyles(element = this.element) {
     const origin = this.origin(element)
     const transformValues = []
     const styles = {}
 
     this.animations.forEach(animation => {
-      const name = animation.name
-      const unit = animation.unit || transformUnits[name] || ''
+      const prop = animation.prop
+      const unit = animation.unit || transformUnits[prop] || ''
       const value = polylinearScale(animation.stops)(origin)
 
-      if (transformKeys.indexOf(name) > -1) {
-        transformValues.push(`${name}(${value}${unit})`)
+      if (transformKeys.indexOf(prop) > -1) {
+        transformValues.push(`${prop}(${value}${unit})`)
       } else {
-        styles[name] = `${value}${unit}`
+        styles[prop] = `${value}${unit}`
       }
     })
 
@@ -49,7 +50,7 @@ class AnimationBus {
     return styles
   }
 
-  applyStyles(element) {
+  applyStyles(element = this.element) {
     const styles = this.getStyles(element)
     Object.keys(styles).forEach(key =>
       element.style[key] = styles[key]
