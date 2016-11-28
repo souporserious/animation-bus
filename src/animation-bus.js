@@ -1,4 +1,4 @@
-import polylinearScale from 'polylinear-scale'
+import polylinearScale from './polylinear-scale'
 
 const transformUnits = {
   perspective: 'px',
@@ -23,23 +23,6 @@ class AnimationBus {
   constructor(animations, origin) {
     this.animations = animations
     this.origin = origin
-    this.createScaleFunctions()
-  }
-
-  createScaleFunctions() {
-    this.animations.forEach(animation => {
-      const domain = []
-      const range = []
-
-      animation.stops.forEach(stop => {
-        domain.push(stop[0])
-        range.push(stop[1])
-      })
-
-      animation.scale = (value) => (
-        polylinearScale(domain, range, true)(value)
-      )
-    })
   }
 
   getStyles(element) {
@@ -50,7 +33,7 @@ class AnimationBus {
     this.animations.forEach(animation => {
       const name = animation.name
       const unit = animation.unit || transformUnits[name] || ''
-      const value = animation.scale(origin)
+      const value = polylinearScale(animation.stops)(origin)
 
       if (transformKeys.indexOf(name) > -1) {
         transformValues.push(`${name}(${value}${unit})`)

@@ -28,17 +28,18 @@ let scrollTop, scrollBottom
 
 // Define animation stops
 const animations = [{
+  name: 'backgroundColor',
+  stops: [
+    [-300, '#b4da55'],
+    [0, '#2ea8ff'],
+    [300, '#b4da55']
+  ]
+}, {
   name: 'scale',
   stops: [
     [-300, 0.25],
     [0, 1],
     [300, 0.25]
-  ]
-}, {
-  name: 'translateY',
-  stops: [
-    [0, 0],
-    [300, 100]
   ]
 }, {
   name: 'opacity',
@@ -78,4 +79,4 @@ window.addEventListener('scroll', function () {
 
 ## Thank You
 
-Huge thank you to [Darin Reid](https://github.com/elcontraption) and all of his work on [Flickity Transformer](https://github.com/elcontraption/flickity-transformer). Most of the code in here is heavily inspired by what he has done.
+Huge thank you to [Darin Reid](https://github.com/elcontraption) and all of his work on [Flickity Transformer](https://github.com/elcontraption/flickity-transformer), as well as [this amazing gist](https://github.com/gpiffault) by [Grégoire Piffault](https://github.com/gpiffault). Most of the code in here is heavily inspired by what these developers have previously done.

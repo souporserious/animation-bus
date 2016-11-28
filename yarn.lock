@@ -2910,10 +2910,6 @@ pkg-dir@^1.0.0:
   dependencies:
     find-up "^1.0.0"
 
-polylinear-scale:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/polylinear-scale/-/polylinear-scale-1.0.8.tgz#c469e1d0d9ae43ea282253630d206196a2e9c88c"
-
 portfinder@0.4.x:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-0.4.0.tgz#a3ffadffafe4fb98e0601a85eda27c27ce84ca1e"

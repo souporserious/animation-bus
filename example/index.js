@@ -10,17 +10,18 @@ let scrollTop, scrollBottom
 
 // Define animation stops
 const animations = [{
+  name: 'backgroundColor',
+  stops: [
+    [-300, '#b4da55'],
+    [0, '#2ea8ff'],
+    [300, '#b4da55']
+  ]
+}, {
   name: 'scale',
   stops: [
     [-300, 0.25],
     [0, 1],
     [300, 0.25]
-  ]
-}, {
-  name: 'translateY',
-  stops: [
-    [0, 0],
-    [300, 100]
   ]
 }, {
   name: 'opacity',

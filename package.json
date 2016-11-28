@@ -31,9 +31,6 @@
     "url": "https://github.com/souporserious/animation-bus/issues"
   },
   "homepage": "https://github.com/souporserious/animation-bus",
-  "dependencies": {
-    "polylinear-scale": "^1.0.8"
-  },
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
