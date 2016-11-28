@@ -1,6 +1,6 @@
 {
   "name": "animation-bus",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Define different animation stops relative to another value.",
   "main": "lib/animation-bus.js",
   "files": [
