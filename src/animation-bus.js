@@ -19,6 +19,22 @@ const transformUnits = {
 }
 const transformKeys = Object.keys(transformUnits)
 
+const filterUnits = {
+  blur: 'px',
+  brightness: '',
+  contrast: '%',
+  grayscale: '%',
+  'hue-rotate': 'deg',
+  invert: '%',
+  //opacity: '%',
+  saturate: '%',
+  sepia: '%'
+
+}
+
+const filterKeys = Object.keys(filterUnits)
+
+
 class AnimationBus {
   constructor({ animations, element, origin }) {
     this.animations = animations
@@ -29,16 +45,20 @@ class AnimationBus {
   getStyles(element = this.element) {
     const origin = this.origin(element)
     const transformValues = []
+    const filterValues = []
     const styles = {}
 
     this.animations.forEach(animation => {
       const prop = animation.prop
-      const unit = animation.unit || transformUnits[prop] || ''
+      const unit = animation.unit || transformUnits[prop] || filterUnits[prop] || ''
       const value = polylinearScale(animation.stops)(origin)
 
       if (transformKeys.indexOf(prop) > -1) {
         transformValues.push(`${prop}(${value}${unit})`)
-      } else {
+      } else if(filterKeys.indexOf(prop) > -1 ) {
+        filterValues.push(`${prop}(${value}${unit})`)
+      }
+       else {
         styles[prop] = `${value}${unit}`
       }
     })
@@ -47,6 +67,10 @@ class AnimationBus {
       styles.transform = transformValues.join(' ')
     }
 
+    if (filterValues.length) {
+      styles.filter = filterValues.join(' ')
+    }
+    console.log(filterValues)
     return styles
   }
 

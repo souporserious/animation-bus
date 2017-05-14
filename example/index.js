@@ -24,6 +24,21 @@ const animations = [{
     [300, 0.25]
   ]
 }, {
+    prop: 'blur',
+    stops: [
+      [-100, 5],
+      [0, 1],
+      [100, 5]
+    ]
+  }, {
+    prop: 'invert',
+    stops: [
+      [-100, 0],
+      [0, 1],
+      [100, 0]
+    ]
+  }, {
+
   prop: 'opacity',
   stops: [
     [-300, 0],
